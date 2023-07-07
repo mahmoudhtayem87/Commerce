@@ -23,6 +23,8 @@ export class ProductComponent implements OnInit {
     public isLoading = false;
     public isAddedToCompare: boolean = false;
 
+    public isAvailable : boolean = false;
+
     constructor(private productSrv: ProductInformationService) {
     }
 
@@ -34,10 +36,19 @@ export class ProductComponent implements OnInit {
     cpdId: string = "";
 
     async loadProductDetails() {
-        this.isLoading = true;
-        this.productDetails = await this.productSrv.getProductInformationById(this.productId);
-        this.AddedToCompare();
-        this.isLoading = false;
+        try{
+            this.isLoading = true;
+            this.productDetails = await this.productSrv.getProductInformationById(this.productId);
+            this.AddedToCompare();
+            this.isAvailable = true;
+        }catch (e)
+        {
+            this.isAvailable = false;
+            //todo log error somewhere
+        }finally {
+            this.isLoading = false;
+        }
+
     }
 
     public setCookie(name: string, value: string, days: number) {

@@ -1,18 +1,21 @@
-<div class="commerce-card"  [@cardAnimation]="animationState">
-    <div class="card" *ngIf="productDetails" >
-        <div class="box">
-            <div class="img">
-                <img [src]="fixProductImage()"  />
-            </div>
-            <h2>{{productDetails["name"]}}<br><span>{{productDetails["slug"]}}</span></h2>
-            <p>
-                {{productDetails["description"]}}
-            </p>
-            <div class="d-flex justify-content-center">
-                <button  style="background-color:{{getAddToCompareColor()}}" (click)="addToCompareTable()">
-                    Compare
-                </button>
+
+    <div class="commerce-card"  [@cardAnimation]="animationState" >
+        <div class="card" *ngIf="productDetails" >
+            <div class="box">
+                <div class="img">
+                    <img [src]="fixProductImage()"  />
+                </div>
+                <h2>{{productDetails["name"]}}<br><span>{{productDetails["slug"]}}</span></h2>
+                <p>
+                    {{productDetails["description"]}}
+                </p>
+                <div class="d-flex justify-content-center">
+                    <button  style="background-color:{{getAddToCompareColor()}}" (click)="addToCompareTable()">
+                        Compare
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+
